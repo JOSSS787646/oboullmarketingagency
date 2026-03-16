@@ -35,15 +35,18 @@ export default function Hero() {
     <section id="hero">
 
       {/* VIDEO BACKGROUND */}
+
       <video
         className="hero-video"
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
       >
-        <source src="/video/Fondo32.mp4" type="video/mp4" />
+        <source src="/video/FondoVideo.mp4" type="video/mp4" />
       </video>
+
 
       <div className="hero-container">
 
@@ -66,6 +69,7 @@ export default function Hero() {
           </p>
 
           <div className="btns">
+
             <a href="#sistema" className="btn-primary">
               Descubrir Sinergia
             </a>

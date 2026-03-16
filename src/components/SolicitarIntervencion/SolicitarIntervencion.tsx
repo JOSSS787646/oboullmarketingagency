@@ -1,9 +1,13 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import "./SolicitarIntervencion.css"
 
 export default function SolicitarIntervencion() {
 
     const sectionRef = useRef(null)
+
+    const [nombre, setNombre] = useState("")
+    const [empresa, setEmpresa] = useState("")
+    const [facturacion, setFacturacion] = useState("")
 
     useEffect(() => {
 
@@ -22,9 +26,7 @@ export default function SolicitarIntervencion() {
 
             })
 
-        }, {
-            threshold: 0.15
-        })
+        }, { threshold: 0.15 })
 
         observer.observe(el)
 
@@ -33,13 +35,29 @@ export default function SolicitarIntervencion() {
     }, [])
 
 
+    const enviarCorreo = () => {
+
+        const destinatario = "oboullmarketingagency@gmail.com"
+
+        const asunto = "Solicitud de Intervención"
+
+        const cuerpo = `
+Nombre: ${nombre}
+Empresa / Web: ${empresa}
+Facturación mensual: ${facturacion}
+        `
+
+        const mailto = `mailto:${destinatario}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`
+
+        window.location.href = mailto
+
+    }
+
     return (
 
         <section id="contacto" ref={sectionRef} className="contact">
 
             <div className="contact-container">
-
-                {/* LEFT */}
 
                 <div className="contact-left">
 
@@ -48,69 +66,52 @@ export default function SolicitarIntervencion() {
                         <span> INTERVENCIÓN.</span>
                     </h2>
 
-                    <p className="contact-text">
-                        No buscamos clientes, seleccionamos 10 socios estratégicos por ciclo.
-                        Si estás listo para dejar de operar bajo suposiciones, hablemos.
-                    </p>
-
-
-                    <div className="contact-info">
-
-                        <div>
-
-                            <span className="contact-label">
-                                DISPONIBILIDAD ACTUAL
-                            </span>
-
-                            <p className="contact-value">
-                                2 Plazas / 10
-                            </p>
-
-                        </div>
-
-
-                        <div>
-
-                            <span className="contact-label">
-                                EMAIL DIRECTO
-                            </span>
-
-                            <p className="contact-value">
-                                oboullmarketingagency@gmail.com
-                            </p>
-
-                        </div>
-
-                    </div>
-
                 </div>
-
-
-
-                {/* RIGHT FORM */}
 
                 <div className="contact-form">
 
                     <label>NOMBRE COMPLETO</label>
-                    <input placeholder="Ej. Carlos Mendoza" />
+                    <input
+                        placeholder="Ej. Carlos Mendoza"
+                        onChange={(e) => setNombre(e.target.value)}
+                    />
 
                     <label>EMPRESA / SITIO WEB</label>
-                    <input placeholder="www.tuempresa.com" />
+                    <input
+                        placeholder="www.tuempresa.com"
+                        onChange={(e) => setEmpresa(e.target.value)}
+                    />
 
-                    <label>FACTURACIÓN MENSUAL (APROX)</label>
+                    <label>FACTURACIÓN MENSUAL</label>
 
-                    <select>
+                    <select onChange={(e) => setFacturacion(e.target.value)}>
                         <option>Seleccionar rango</option>
                         <option>$5k - $20k</option>
                         <option>$20k - $100k</option>
                         <option>$100k+</option>
                     </select>
 
-                    <button className="contact-button">
+                    <button
+                        className="contact-button"
+                        onClick={enviarCorreo}
+                    >
                         Enviar Solicitud de Auditoría
                     </button>
 
                 </div>
+
+            </div>
+
+
+            {/* LOGO EMPRESA */}
+
+            <div className="contact-logo-container">
+
+                <img
+                    src="/Letra.png"
+                    alt="Logo empresa"
+                    className="contact-logo"
+                />
 
             </div>
 

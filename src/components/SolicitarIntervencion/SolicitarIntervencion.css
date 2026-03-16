@@ -377,3 +377,117 @@ font-size:15px;
 }
 
 }
+
+/* ===================== */
+/* LOGO EMPRESA */
+/* ===================== */
+
+.contact-logo-container{
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+margin-top:90px;
+
+width:100%;
+
+}
+
+
+/* LOGO */
+
+.contact-logo{
+
+width:180px;
+max-width:40vw;
+
+opacity:.95;
+
+filter:grayscale(40%) brightness(.9);
+
+animation:logoFloat 6s ease-in-out infinite;
+
+}
+
+
+
+/* ===================== */
+/* ANIMACIÓN AUTOMÁTICA */
+/* ===================== */
+
+@keyframes logoFloat{
+
+0%{
+
+transform:translateY(0px) scale(1);
+
+filter:grayscale(40%) brightness(.9);
+
+}
+
+40%{
+
+transform:translateY(10px) scale(1.04);
+
+filter:
+grayscale(0%)
+brightness(1.1)
+drop-shadow(0 0 15px rgba(26,90,255,.7));
+
+}
+
+70%{
+
+transform:translateY(6px) scale(1.02);
+
+filter:
+grayscale(10%)
+brightness(1.05)
+drop-shadow(0 0 8px rgba(26,90,255,.5));
+
+}
+
+100%{
+
+transform:translateY(0px) scale(1);
+
+filter:grayscale(40%) brightness(.9);
+
+}
+
+}
+
+
+
+/* ===================== */
+/* RESPONSIVE */
+/* ===================== */
+
+@media (max-width:900px){
+
+.contact-logo{
+width:150px;
+}
+
+}
+
+
+@media (max-width:600px){
+
+.contact-logo{
+width:120px;
+animation-duration:5s;
+}
+
+}
+
+
+@media (max-width:420px){
+
+.contact-logo{
+width:95px;
+animation-duration:4.5s;
+}
+
+}
