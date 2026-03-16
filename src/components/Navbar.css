@@ -1,0 +1,276 @@
+/* ============================= */
+/* NAVBAR BASE */
+/* ============================= */
+
+.nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:999;
+background:transparent;
+transition:all .35s ease;
+}
+
+
+/* ============================= */
+/* NAVBAR CUANDO HAY SCROLL */
+/* ============================= */
+
+.nav-visible{
+background:rgba(5,5,5,.78);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(255,255,255,.05);
+box-shadow:0 10px 30px rgba(0,0,0,.5);
+animation:navFade .45s ease;
+}
+
+@keyframes navFade{
+
+from{
+opacity:0;
+transform:translateY(-10px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
+
+.nav-container{
+max-width:1400px;
+margin:auto;
+display:flex;
+align-items:center;
+padding:18px 40px;
+}
+
+
+/* ============================= */
+/* LOGO */
+/* ============================= */
+
+.nav-logo img{
+height:70px;
+width:auto;
+object-fit:contain;
+cursor:pointer;
+transition:transform .35s ease;
+}
+
+.nav-logo img:hover{
+transform:scale(1.05);
+}
+
+
+/* ============================= */
+/* MENU DESKTOP */
+/* ============================= */
+
+.nav-menu{
+display:flex;
+align-items:center;
+gap:36px;
+margin-left:auto;
+}
+
+.nav-menu a{
+font-size:13px;
+font-weight:600;
+letter-spacing:1px;
+color:#d0d0d0;
+text-decoration:none;
+transition:all .25s ease;
+position:relative;
+padding:6px 0;
+}
+
+.nav-menu a:hover{
+color:#fff;
+transform:translateY(-2px);
+}
+
+.nav-menu a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:2px;
+background:#1a5aff;
+transition:.3s;
+}
+
+.nav-menu a:hover::after{
+width:100%;
+}
+
+
+/* ============================= */
+/* BOTON */
+/* ============================= */
+
+.nav-cta{
+background:#cff700;
+color:#000 !important;
+padding:14px 26px;
+border-radius:4px;
+font-weight:700;
+border:1px solid #1a5aff;
+transition:all .25s ease;
+}
+
+.nav-cta:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 35px rgba(207,247,0,.35);
+background:#dfff2a;
+}
+
+
+/* ============================= */
+/* BURGER */
+/* ============================= */
+
+.nav-toggle{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+margin-left:20px;
+}
+
+.nav-toggle span{
+width:26px;
+height:2px;
+background:#fff;
+transition:.3s;
+}
+
+.nav-toggle.active span:nth-child(1){
+transform:rotate(45deg) translateY(7px);
+}
+
+.nav-toggle.active span:nth-child(2){
+opacity:0;
+}
+
+.nav-toggle.active span:nth-child(3){
+transform:rotate(-45deg) translateY(-7px);
+}
+
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width:1000px){
+
+.nav-container{
+padding:16px 22px;
+}
+
+
+/* MENU LATERAL */
+
+.nav-menu{
+
+position:fixed;
+
+top:0;
+right:-100%;
+
+height:100vh;
+width:280px;
+
+background:#050505;
+
+display:flex;
+flex-direction:column;
+
+align-items:flex-start;
+
+padding:90px 28px;
+
+gap:26px;
+
+transition:right .35s ease;
+
+border-left:1px solid rgba(255,255,255,.05);
+
+}
+
+/* MENU ABIERTO */
+
+.nav-menu.active{
+right:0;
+}
+
+
+/* LINKS */
+
+.nav-menu a{
+
+font-size:14px;
+
+letter-spacing:1px;
+
+color:#e0e0e0;
+
+text-align:left;
+
+width:100%;
+
+}
+
+
+/* BOTON A LA DERECHA */
+
+.nav-cta{
+
+margin-top:auto;
+
+align-self:flex-end;
+
+padding:14px 20px;
+
+font-size:13px;
+
+}
+
+
+/* BURGER */
+
+.nav-toggle{
+display:flex;
+}
+
+}
+
+
+/* ============================= */
+/* MOBILE PEQUEÑO */
+/* ============================= */
+
+@media (max-width:480px){
+
+.nav-logo img{
+height:46px;
+}
+
+.nav-menu{
+width:250px;
+padding:80px 24px;
+}
+
+.nav-menu a{
+font-size:13px;
+}
+
+}

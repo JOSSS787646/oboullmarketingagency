@@ -1,0 +1,221 @@
+/* SECTION */
+
+.intro{
+
+width:100%;
+
+padding:150px 12vw;
+
+background:linear-gradient(
+90deg,
+#004cf7,
+#1e49cf
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+overflow:hidden;
+position:relative;
+
+}
+
+
+/* DECORATIVE LIGHT */
+
+.intro::before{
+
+content:"";
+
+position:absolute;
+
+width:600px;
+height:600px;
+
+background:radial-gradient(
+circle,
+rgba(255,255,255,0.18),
+transparent 60%
+);
+
+top:-200px;
+left:50%;
+
+transform:translateX(-50%);
+
+pointer-events:none;
+
+}
+
+
+/* CONTENT */
+
+.intro__content{
+
+max-width:900px;
+padding:0 20px;
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:
+opacity .8s cubic-bezier(.16,1,.3,1),
+transform .8s cubic-bezier(.16,1,.3,1);
+
+}
+
+
+/* VISIBLE */
+
+.intro__content.visible{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+
+/* TITLE */
+
+.intro__title{
+
+font-size:clamp(30px,2.2vw,30px);
+
+font-weight:700;
+
+line-height:1.45;
+
+letter-spacing:-0.2px;
+
+color:#050505;
+
+margin-bottom:26px;
+
+opacity:0;
+
+transform:translateY(20px);
+
+transition:
+opacity .7s ease .2s,
+transform .7s ease .2s;
+
+}
+
+
+/* DECORATIVE LINE */
+
+.intro__title::after{
+
+content:"";
+
+display:block;
+
+width:80px;
+height:3px;
+
+background:#050505;
+
+margin:18px auto 0;
+
+opacity:.35;
+
+}
+
+
+/* TEXT */
+
+.intro__text{
+
+font-size:clamp(20px,1.1vw,16px);
+
+line-height:1.8;
+
+color:#050505;
+
+max-width:760px;
+
+margin:auto;
+
+opacity:0;
+
+transform:translateY(20px);
+
+transition:
+opacity .7s ease .35s,
+transform .7s ease .35s;
+
+}
+
+
+/* STAGGER ANIMATION */
+
+.intro__content.visible .intro__title{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+.intro__content.visible .intro__text{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width:1024px){
+
+.intro{
+padding:120px 8vw;
+}
+
+.intro__title{
+font-size:26px;
+}
+
+.intro__text{
+font-size:18px;
+}
+
+}
+
+@media (max-width:768px){
+
+.intro{
+padding:100px 30px;
+}
+
+.intro__title{
+font-size:22px;
+}
+
+.intro__text{
+font-size:16px;
+}
+
+}
+
+@media (max-width:480px){
+
+.intro{
+padding:80px 24px;
+}
+
+.intro__title{
+font-size:20px;
+line-height:1.4;
+}
+
+.intro__text{
+font-size:15px;
+line-height:1.7;
+}
+
+}
