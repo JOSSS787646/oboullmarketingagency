@@ -26,17 +26,14 @@ animation:navFade .45s ease;
 }
 
 @keyframes navFade{
-
 from{
 opacity:0;
 transform:translateY(-10px);
 }
-
 to{
 opacity:1;
 transform:translateY(0);
 }
-
 }
 
 
@@ -143,7 +140,8 @@ display:none;
 flex-direction:column;
 gap:5px;
 cursor:pointer;
-margin-left:20px;
+/* FIX: margin-left:auto empuja el burger al extremo derecho */
+margin-left:auto;
 }
 
 .nav-toggle span{
@@ -167,6 +165,23 @@ transform:rotate(-45deg) translateY(-7px);
 
 
 /* ============================= */
+/* OVERLAY (cierra al tocar fuera) */
+/* ============================= */
+
+.nav-overlay{
+display:none;
+position:fixed;
+inset:0;
+z-index:998;
+background:transparent;
+}
+
+.nav-overlay.active{
+display:block;
+}
+
+
+/* ============================= */
 /* MOBILE */
 /* ============================= */
 
@@ -176,77 +191,50 @@ transform:rotate(-45deg) translateY(-7px);
 padding:16px 22px;
 }
 
-
 /* MENU LATERAL */
-
 .nav-menu{
-
 position:fixed;
-
 top:0;
+/* FIX: parte desde la derecha correctamente */
 right:-100%;
-
 height:100vh;
 width:280px;
-
 background:#050505;
-
 display:flex;
 flex-direction:column;
-
 align-items:flex-start;
-
 padding:90px 28px;
-
 gap:26px;
-
 transition:right .35s ease;
-
 border-left:1px solid rgba(255,255,255,.05);
-
+/* FIX: z-index por encima del overlay */
+z-index:999;
+margin-left:0;
 }
 
 /* MENU ABIERTO */
-
 .nav-menu.active{
 right:0;
 }
 
-
 /* LINKS */
-
 .nav-menu a{
-
 font-size:14px;
-
 letter-spacing:1px;
-
 color:#e0e0e0;
-
 text-align:left;
-
 width:100%;
-
 }
 
-
-/* BOTON A LA DERECHA */
-
+/* BOTON */
 .nav-cta{
-
 margin-top:auto;
-
 align-self:flex-end;
-
 padding:14px 20px;
-
 font-size:13px;
-
 }
-
 
 /* BURGER */
-
 .nav-toggle{
 display:flex;
 }

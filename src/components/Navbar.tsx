@@ -7,79 +7,66 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
-
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 80)
-        }
-
+        const handleScroll = () => setScrolled(window.scrollY > 80)
         window.addEventListener("scroll", handleScroll)
-
         return () => window.removeEventListener("scroll", handleScroll)
-
     }, [])
 
+    const close = () => setOpen(false)
+
     return (
+        <>
+            {/* OVERLAY: cierra el menú al tocar fuera */}
+            <div
+                className={`nav-overlay ${open ? "active" : ""}`}
+                onClick={close}
+            />
 
-        <header className={`nav ${scrolled ? "nav-visible" : ""}`}>
+            <header className={`nav ${scrolled ? "nav-visible" : ""}`}>
 
-            <div className="nav-container">
+                <div className="nav-container">
 
-                {/* LOGO */}
+                    {/* LOGO */}
+                    <div className="nav-logo">
+                        <a href="#hero">
+                            <img src="/LogoObom.png" alt="Oboull" />
+                        </a>
+                    </div>
 
-                <div className="nav-logo">
+                    {/* MENU */}
+                    <nav className={`nav-menu ${open ? "active" : ""}`}>
 
-                    <a href="#hero">
+                        <a href="#sistema" onClick={close}>
+                            SISTEMA DE INTERVENCIÓN
+                        </a>
 
-                        <img
-                            src="/LogoObom.png"
-                            alt="Oboull"
-                        />
+                        <a href="#areas" onClick={close}>
+                            LA ARQUITECTURA DEL CRECIMIENTO
+                        </a>
 
-                    </a>
+                        <a href="#team" onClick={close}>
+                            OBOULL TEAM
+                        </a>
 
-                </div>
+                        <a href="#contacto" className="nav-cta" onClick={close}>
+                            SOLICITAR INTERVENCIÓN
+                        </a>
 
+                    </nav>
 
-                {/* MENU */}
-
-                <nav className={`nav-menu ${open ? "active" : ""}`}>
-
-                    <a href="#sistema" onClick={() => setOpen(false)}>
-                        SISTEMA DE INTERVENCIÓN
-                    </a>
-
-                    <a href="#areas" onClick={() => setOpen(false)}>
-                        LA ARQUITECTURA DEL CRECIMIENTO
-                    </a>
-
-                    <a href="#team" onClick={() => setOpen(false)}>
-                        OBOULL TEAM
-                    </a>
-
-                    <a href="#contacto" className="nav-cta" onClick={() => setOpen(false)}>
-                        SOLICITAR INTERVENCIÓN
-                    </a>
-
-                </nav>
-
-
-                {/* BURGER MENU */}
-
-                <div
-                    className={`nav-toggle ${open ? "active" : ""}`}
-                    onClick={() => setOpen(!open)}
-                >
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    {/* BURGER — va después del menú para quedar a la derecha */}
+                    <div
+                        className={`nav-toggle ${open ? "active" : ""}`}
+                        onClick={() => setOpen(!open)}
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
 
                 </div>
 
-            </div>
-
-        </header>
-
+            </header>
+        </>
     )
-
 }
